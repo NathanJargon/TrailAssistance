@@ -1,0 +1,134 @@
+.signup-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.signup-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/ustp.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.signup-form {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.icon {
+    width: 20px;
+    margin: 5px;
+}
+
+.signup-form input {
+    flex: 1;
+    height: 40px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: black;
+    background-color: transparent;
+}
+
+.signup-form input::placeholder {
+    color: grey;
+}
+
+.signup-form select {
+    flex: 1;
+    height: 40px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: black;
+    background-color: transparent;
+    appearance: none; /* Remove default dropdown arrow */
+    -webkit-appearance: none; /* Remove default dropdown arrow in Safari */
+    -moz-appearance: none; /* Remove default dropdown arrow in Firefox */
+}
+
+.signup-form select:focus {
+    outline: none;
+}
+
+.signup-form button {
+    width: 50%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-form button:hover {
+    background-color: #0056b3;
+}
+
+.next-icon {
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.signup-form hr {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+.signup-form p {
+    color: white;
+}
+
+.signup-form a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signup-form a:hover {
+    text-decoration: underline;
+}
+
+.signup-logo {
+    margin-top: 0px;
+    width: 100px;
+}

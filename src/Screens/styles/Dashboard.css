@@ -1,0 +1,148 @@
+.dashboard-page {
+    display: flex;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.dashboard-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/ustp.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.dashboard-sidebar {
+    width: 200px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+
+.dashboard-logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.dashboard-user-info {
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
+}
+
+.dashboard-user-info p {
+    margin: 5px 0;
+}
+
+.dashboard-sidebar button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.dashboard-sidebar button:hover {
+    background-color: #0056b3;
+}
+
+.dashboard-content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.dashboard-form {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.dashboard-input-group {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    padding: 10px;
+}
+
+.dashboard-input-group label {
+    margin-bottom: 5px;
+    color: black;
+}
+
+.dashboard-input-group input,
+.dashboard-textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: black;
+    background-color: transparent;
+}
+
+.dashboard-textarea {
+    height: 150px;
+    resize: none;
+}
+
+.dashboard-textarea::placeholder {
+    color: grey;
+}
+
+.dashboard-submit-btn {
+    width: 50%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard-submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.dashboard-form hr {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
