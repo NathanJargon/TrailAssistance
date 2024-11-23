@@ -4,7 +4,9 @@ import SignUp from './Screens/Signup';
 import Login from './Screens/Login';
 import Landing from './Screens/Landing';
 import Dashboard from './Screens/Dashboard';
+import Admin from './Screens/Admin';
 import { AuthProvider } from './Screens/Auth/AuthContext';
+
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
             <Route path="/landing" element={<Landing />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </div>
       </Router>
