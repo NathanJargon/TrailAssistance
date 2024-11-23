@@ -1,0 +1,63 @@
+.concerns-form {
+    background-color: rgba(0,0,0,0.8); /* Semi-black background */
+    padding: 20px;
+    border-radius: 8px;
+    color: #fff;
+    margin: 20px;
+  }
+  
+  .concerns-input-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .concerns-input-group label,
+  .concerns-input-group input,
+  .concerns-input-group select,
+  .concerns-input-group textarea {
+    flex: 1 1 calc(50% - 1rem);
+    min-width: 200px;
+  }
+  
+  .concerns-input-group textarea {
+    flex: 1 1 100%; /* Textareas should take full width */
+    border-radius: 10px;
+  }
+  
+  .error-text {
+    color: red;
+    flex: 1 1 100%;
+  }
+  
+  .concerns-submit-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: auto; /* Align to the right */
+  }
+  
+  .concerns-submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .next-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .concerns-input-group select {
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 10px;
+  }

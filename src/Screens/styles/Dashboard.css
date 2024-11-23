@@ -35,9 +35,16 @@ body {
     z-index: 1;
 }
 
+.dashboard-ustp-logo {
+    width: 125px;
+    margin-bottom: 0px;
+}
+
 .dashboard-logo {
-    width: 100px;
-    margin-bottom: 20px;
+    width: 150px;
+    position: absolute;
+    top: 130px;
+    left: 40px;
 }
 
 .dashboard-user-info {

@@ -1,0 +1,71 @@
+.website-feedback {
+    background-color: rgba(0,0,0,0.8); /* Semi-black background */
+    padding: 20px;
+    border-radius: 8px;
+    color: #fff;
+    margin: 20px;
+    width: 1000px;
+    max-width: 600px;
+    margin: 20px auto; /* Center the form */
+  }
+  
+  .feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .feedback-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .feedback-input-group label {
+    font-weight: bold;
+  }
+  
+  .feedback-input-group select,
+  .feedback-input-group textarea {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #555;
+    background-color: #444;
+    color: #fff;
+  }
+  
+  .feedback-submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the content horizontally */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: flex-end; /* Align to the right */
+  }
+  
+  .feedback-submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .next-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px; /* Add some space between the text and the icon */
+  }
+  
+  .success-message {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .thanks-icon {
+    width: 100px;
+    height: auto;
+    margin-top: 20px;
+  }

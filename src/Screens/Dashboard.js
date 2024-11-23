@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './styles/Dashboard.css';
-import logo from '../assets/ustplogo.png';
 import { useAuth } from './Auth/AuthContext';
 import { DashboardProvider, useDashboard } from './Context/DashboardContext';
 import PersonalInfo from './DashboardViews/PersonalInfo';
@@ -10,6 +9,9 @@ import { useNavigate } from 'react-router-dom';
 import people from '../assets/people.png';
 import marks from '../assets/marks.png';
 import rate from '../assets/rate.png';
+import ustplogo from '../assets/ustplogo.png';
+import logo from '../assets/logo.png';
+import logout from '../assets/logout.png';
 
 const DashboardContent = () => {
   const [currentView, setCurrentView] = useState('personalInfo');
@@ -49,7 +51,10 @@ const DashboardContent = () => {
   return (
     <div className="dashboard-page">
       <div className="dashboard-sidebar">
-        <img src={logo} alt="USTP Logo" className="dashboard-logo" />
+        <img src={ustplogo} alt="USTP Logo" className="dashboard-ustp-logo" />
+        <header className="login-header">
+          <img src={logo} alt="USTP Logo" className="dashboard-logo" />
+        </header>
         {currentUser && (
           <div className="dashboard-user-info">
             <h1>{currentUser.name || 'Default Name'}</h1>
@@ -77,7 +82,10 @@ const DashboardContent = () => {
           <img src={rate} alt="Rate Icon" className="button-icon" />
           Website Feedback
         </button>
-        <button className="logout-button" onClick={handleLogout}>Log Out</button>
+        <button className="logout-button" onClick={handleLogout}>
+          <img src={logout} alt="Logout Icon" className="button-icon" />
+          Log Out
+        </button>
       </div>
       <div className="dashboard-content">
         {currentView === 'personalInfo' && (
@@ -85,10 +93,25 @@ const DashboardContent = () => {
             currentUser={currentUser}
             onFormValid={handleFormValid}
             onSaveInfo={handleSaveInfo}
+            onSaveAndNavigate={handleNavigate}
           />
         )}
-        {currentView === 'concerns' && <Concerns />}
-        {currentView === 'websiteFeedback' && <WebsiteFeedback />}
+        {currentView === 'concerns' && (
+        <Concerns
+          currentUser={currentUser}
+          onFormValid={handleFormValid}
+          onSaveInfo={handleSaveInfo}
+          onSaveAndNavigate={handleNavigate}
+          />
+        )}
+        {currentView === 'websiteFeedback' && (
+        <WebsiteFeedback 
+          currentUser={currentUser}
+          onFormValid={handleFormValid}
+          onSaveInfo={handleSaveInfo}
+          onSaveAndNavigate={handleNavigate}
+          />
+        )}
       </div>
     </div>
   );

@@ -6,6 +6,8 @@
     color: white;
     max-width: 600px;
     margin: 0 auto;
+    padding-bottom: 60px;
+    position: relative; /* Ensure the container has a relative position */
 }
 
 .personalinfo-title {
@@ -51,3 +53,38 @@
     width: 100;
     height: auto;
 }
+
+.save-button-container {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 100%;
+}
+.save-button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .save-button:hover {
+    background-color: darkblue;
+  }
+  
+  .next-icon {
+    margin-left: 10px;
+  }
+
+    .error {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
