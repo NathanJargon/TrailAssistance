@@ -50,14 +50,14 @@ const Login = () => {
   return (
     <div className="login-page">
       <header className="login-header">
-        <img src={logo} alt="USTP Logo" className="logo" />
+        <img src={logo} alt="USTP Logo" className="login-logo" />
       </header>
       <main className="login-content">
-        <h1>Login to your account</h1>
+        <h1 className="login-h1">Login to your account</h1>
         <hr />
         <form onSubmit={handleLogin} className="login-form">
-          <div className="input-group">
-            <img src={user} alt="User Icon" className="icon" />
+          <div className="login-input-group">
+            <img src={user} alt="User Icon" className="login-icon" />
             <input
               type="email"
               placeholder="Email"
@@ -67,10 +67,11 @@ const Login = () => {
               autoComplete="off"
               autoCorrect="off"
               autoCapitalize="none"
+              className="login-input"
             />
           </div>
-          <div className="input-group">
-            <img src={padlock} alt="Padlock Icon" className="icon" />
+          <div className="login-input-group">
+            <img src={padlock} alt="Padlock Icon" className="login-icon" />
             <input
               type="password"
               placeholder="Password"
@@ -80,16 +81,17 @@ const Login = () => {
               autoComplete="off"
               autoCorrect="off"
               autoCapitalize="none"
+              className="login-input"
             />
           </div>
-          <div className="form-container">
+          <div className="login-form-container">
             <button type="submit" className="login-btn">
               Login
               <img src={next} alt="Next Icon" />
             </button>
           </div>
           <hr />
-          <p>Don't have an account? <Link to="/sign-up">Sign up</Link></p>
+          <p>Don't have an account? <Link to="/sign-up" className="login-link">Sign up</Link></p>
         </form>
       </main>
     </div>

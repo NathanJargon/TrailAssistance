@@ -74,7 +74,13 @@
   .mobile-warning p {
     margin: 0;
     padding: 0;
-    font-size: 1.5em;
+    font-size: 0.5em;
     line-height: 1.4;
+  }
+
+  .thanks-image {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
   }
 }

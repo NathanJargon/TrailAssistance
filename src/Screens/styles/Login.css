@@ -6,55 +6,55 @@
     border-radius: 10px;
     text-align: center;
     color: white;
-}
-
-.input-group {
+  }
+  
+  .login-input-group {
     margin-bottom: 15px;
     display: flex;
     align-items: center;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: white;
-}
-
-.icon {
+  }
+  
+  .login-icon {
     width: 20px;
     margin: 5px;
-}
-
-input {
+  }
+  
+  .login-input {
     flex: 1;
     height: 40px;
     padding: 5px;
     border: none;
     border-radius: 5px;
     box-sizing: border-box;
-}
-
-input::placeholder {
+  }
+  
+  .login-input::placeholder {
     color: grey; /* Grey placeholder text color */
-}
-
-body {
+  }
+  
+  .login-body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
-}
-
-.form-container {
+  }
+  
+  .login-form-container {
     display: flex;
     justify-content: center;
-}
-
-.login-page {
+  }
+  
+  .login-page {
     position: relative;
     height: 100vh;
     display: block;
     overflow: hidden; /* Ensure content doesn't overflow */
-}
-
-.login-page::before {
+  }
+  
+  .login-page::before {
     content: "";
     position: absolute;
     top: 0;
@@ -66,34 +66,34 @@ body {
     background-position: center;
     opacity: 0.8; /* Desired opacity */
     z-index: -1; /* Place it behind the content */
-}
-
-.login-header {
+  }
+  
+  .login-header {
     text-align: center;
     padding: 20px;
-}
-
-.logo {
+  }
+  
+  .login-logo {
     margin-top: 30px;
     width: 125px;
-}
-
-h1 {
+  }
+  
+  .login-h1 {
     margin-bottom: 10px;
     color: white;
     font-size: 24px;
-}
-
-.login-content hr {
+  }
+  
+  .login-content hr {
     margin: 20px 0;
     border-color: white;
-}
-
-form {
+  }
+  
+  .login-form {
     display: block;
-}
-
-.login-btn {
+  }
+  
+  .login-btn {
     width: 40%;
     padding: 8px;
     background-color: #007bff;
@@ -105,34 +105,34 @@ form {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.login-btn img {
+  }
+  
+  .login-btn img {
     margin-left: 10px;
     width: 20px;
     height: 20px;
-}
-
-.login-btn:hover {
+  }
+  
+  .login-btn:hover {
     background-color: #0056b3;
-}
-
-.login-form hr {
+  }
+  
+  .login-form hr {
     width: 100%;
     border: 0;
     border-top: 1px solid #ccc;
     margin: 20px 0;
-}
-
-.login-form p {
+  }
+  
+  .login-form p {
     color: white;
-}
-
-.login-form a {
+  }
+  
+  .login-form a {
     color: #007bff;
     text-decoration: none;
-}
-
-.login-form a:hover {
+  }
+  
+  .login-form a:hover {
     text-decoration: underline;
-}
+  }

@@ -48,6 +48,11 @@ const Admin = () => {
     setVisitors(visitors.filter(visitor => visitor.id !== id));
   };
 
+  const handleDeleteConcern = async (id) => {
+    await deleteDoc(doc(db, 'concerns', id));
+    setConcerns(concerns.filter(concern => concern.id !== id));
+  };
+
   const handleViewConcern = (concern) => {
     setSelectedConcern(concern);
   };
@@ -74,54 +79,54 @@ const Admin = () => {
   return (
     <div className="admin-page">
       {!isAuthenticated && (
-        <div className="login-modal">
-          <div className="login-content">
-            <h2>Admin Login</h2>
+        <div className="admin-login-modal">
+          <div className="admin-login-content">
+            <h2 className="admin-login-title">Admin Login</h2>
             <input
               type="email"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              className="admin-login-input"
             />
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              className="admin-login-input"
             />
-            <button onClick={handleLogin}>Login</button>
-            {error && <p className="error">{error}</p>}
+            <button onClick={handleLogin} className="admin-login-button">Login</button>
+            {error && <p className="admin-error">{error}</p>}
           </div>
         </div>
       )}
       {isAuthenticated && (
         <>
-          <div className="toggle-buttons">
-            <button onClick={() => setActiveSection('visitors')}>Visitors</button>
-            <button onClick={() => setActiveSection('concerns')}>Concerns</button>
-            <button onClick={() => setActiveSection('ratings')}>Ratings</button>
+          <div className="admin-toggle-buttons">
+            <button onClick={() => setActiveSection('visitors')} className="admin-button">Visitors</button>
+            <button onClick={() => setActiveSection('concerns')} className="admin-button">Concerns</button>
+            <button onClick={() => setActiveSection('ratings')} className="admin-button">Ratings</button>
           </div>
           {activeSection === 'visitors' && (
             <div className="admin-section">
               <h2>Visitors</h2>
-              <div className="table-container">
-                <table>
+              <div className="admin-table-container">
+                <table className="admin-table">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Visit Date</th>
-                      <th>Actions</th>
+                      <th className="admin-th">Name</th>
+                      <th className="admin-th">Email</th>
+                      <th className="admin-th">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {visitors.slice(0, 20).map((visitor, index) => (
                       <tr key={index}>
-                        <td>{visitor.name}</td>
-                        <td>{visitor.email}</td>
-                        <td>{visitor.visitDate}</td>
-                        <td>
-                          <button onClick={() => handleDeleteVisitor(visitor.id)}>Delete</button>
+                        <td className="admin-td">{visitor.name}</td>
+                        <td className="admin-td">{visitor.email}</td>
+                        <td className="admin-td">
+                          <button onClick={() => handleDeleteVisitor(visitor.id)} className="admin-button">Delete</button>
                         </td>
                       </tr>
                     ))}
@@ -133,34 +138,35 @@ const Admin = () => {
           {activeSection === 'concerns' && (
             <div className="admin-section">
               <h2>Concerns</h2>
-              <div className="table-container">
-                <table>
+              <div className="admin-table-container">
+                <table className="admin-table">
                   <thead>
                     <tr>
-                      <th>Student ID</th>
-                      <th>Details</th>
-                      <th>Status</th>
-                      <th>Actions</th>
+                      <th className="admin-th">Student ID</th>
+                      <th className="admin-th">Details</th>
+                      <th className="admin-th">Status</th>
+                      <th className="admin-th">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {selectedConcern ? (
                       <tr>
-                        <td>{selectedConcern.student_id}</td>
-                        <td>{selectedConcern.details}</td>
-                        <td>{selectedConcern.status}</td>
-                        <td>
-                          <button onClick={() => setSelectedConcern(null)}>Close</button>
+                        <td className="admin-td">{selectedConcern.student_id}</td>
+                        <td className="admin-td">{selectedConcern.details}</td>
+                        <td className="admin-td">{selectedConcern.status}</td>
+                        <td className="admin-td">
+                          <button onClick={() => setSelectedConcern(null)} className="admin-button">Close</button>
                         </td>
                       </tr>
                     ) : (
                       concerns.map((concern, index) => (
                         <tr key={index}>
-                          <td>{concern.student_id}</td>
-                          <td>{concern.details}</td>
-                          <td>{concern.status}</td>
-                          <td>
-                            <button onClick={() => handleViewConcern(concern)}>View More</button>
+                          <td className="admin-td">{concern.student_id}</td>
+                          <td className="admin-td">{concern.details}</td>
+                          <td className="admin-td">{concern.status}</td>
+                          <td className="admin-td">
+                            <button onClick={() => handleViewConcern(concern)} className="admin-button">View More</button>
+                            <button onClick={() => handleDeleteConcern(concern.id)} className="admin-button">Delete</button>
                           </td>
                         </tr>
                       ))
@@ -169,7 +175,7 @@ const Admin = () => {
                 </table>
               </div>
               {selectedConcern && (
-                <div className="concern-details">
+                <div className="admin-concern-details">
                   <h3>Concern Details</h3>
                   <p><strong>Student ID:</strong> {selectedConcern.student_id}</p>
                   <p><strong>Details:</strong> {selectedConcern.details}</p>
@@ -187,21 +193,21 @@ const Admin = () => {
           {activeSection === 'ratings' && (
             <div className="admin-section">
               <h2>Ratings</h2>
-              <div className="table-container">
-                <table>
+              <div className="admin-table-container">
+                <table className="admin-table">
                   <thead>
                     <tr>
-                      <th>User ID</th>
-                      <th>Rating</th>
-                      <th>Feedback</th>
+                      <th className="admin-th">User ID</th>
+                      <th className="admin-th">Rating</th>
+                      <th className="admin-th">Feedback</th>
                     </tr>
                   </thead>
                   <tbody>
                     {ratings.slice(0, 20).map((rating, index) => (
                       <tr key={index}>
-                        <td>{rating.user_id}</td>
-                        <td>{rating.rating}</td>
-                        <td>{rating.feedback}</td>
+                        <td className="admin-td">{rating.user_id}</td>
+                        <td className="admin-td">{rating.rating}</td>
+                        <td className="admin-td">{rating.feedback}</td>
                       </tr>
                     ))}
                   </tbody>

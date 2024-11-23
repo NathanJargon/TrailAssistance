@@ -111,149 +111,175 @@ const Concerns = ({ currentUser, onFormValid, onSaveInfo, onSaveAndNavigate }) =
       <h2>Submit Your Concern/Request</h2>
       <hr />
       <div className="concerns-input-group">
-        <label htmlFor="purpose_of_visit">Purpose of Visit:</label>
-        <input
-          type="text"
-          id="purpose_of_visit"
-          name="purpose_of_visit"
-          value={purposeOfVisit}
-          onChange={(e) => setPurposeOfVisit(e.target.value)}
-          required
-        />
-        {errors.purposeOfVisit && <span className="error-text">{errors.purposeOfVisit}</span>}
-        <label htmlFor="appointment_date">Appointment Date and Time:</label>
-        <input
-          type="datetime-local"
-          id="appointment_date"
-          name="appointment_date"
-          value={appointmentDate}
-          onChange={(e) => setAppointmentDate(e.target.value)}
-          required
-        />
-        {errors.appointmentDate && <span className="error-text">{errors.appointmentDate}</span>}
+        <div>
+          <label htmlFor="purpose_of_visit">Purpose of Visit:</label>
+          <input
+            type="text"
+            id="purpose_of_visit"
+            name="purpose_of_visit"
+            value={purposeOfVisit}
+            onChange={(e) => setPurposeOfVisit(e.target.value)}
+            required
+          />
+          {errors.purposeOfVisit && <span className="error-text">{errors.purposeOfVisit}</span>}
+        </div>
+        <div>
+          <label htmlFor="appointment_date">Appointment Date and Time:</label>
+          <input
+            type="datetime-local"
+            id="appointment_date"
+            name="appointment_date"
+            value={appointmentDate}
+            onChange={(e) => setAppointmentDate(e.target.value)}
+            required
+          />
+          {errors.appointmentDate && <span className="error-text">{errors.appointmentDate}</span>}
+        </div>
       </div>
       <div className="concerns-input-group">
-        <label htmlFor="preferred_contact_method">Preferred Contact Method:</label>
-        <input
-          type="text"
-          id="preferred_contact_method"
-          name="preferred_contact_method"
-          value={preferredContactMethod}
-          onChange={(e) => setPreferredContactMethod(e.target.value)}
-          required
-        />
-        {errors.preferredContactMethod && <span className="error-text">{errors.preferredContactMethod}</span>}
-        <label htmlFor="urgency_level">Urgency Level:</label>
-        <select
-          id="urgency_level"
-          name="urgency_level"
-          value={urgencyLevel}
-          onChange={(e) => setUrgencyLevel(e.target.value)}
-          required
-        >
-          <option value="">Select Urgency Level</option>
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
-        </select>
-        {errors.urgencyLevel && <span className="error-text">{errors.urgencyLevel}</span>}
+        <div>
+          <label htmlFor="preferred_contact_method">Preferred Contact Method:</label>
+          <input
+            type="text"
+            id="preferred_contact_method"
+            name="preferred_contact_method"
+            value={preferredContactMethod}
+            onChange={(e) => setPreferredContactMethod(e.target.value)}
+            required
+          />
+          {errors.preferredContactMethod && <span className="error-text">{errors.preferredContactMethod}</span>}
+        </div>
+        <div>
+          <label htmlFor="urgency_level">Urgency Level:</label>
+          <select
+            id="urgency_level"
+            name="urgency_level"
+            value={urgencyLevel}
+            onChange={(e) => setUrgencyLevel(e.target.value)}
+            required
+          >
+            <option value="">Select Urgency Level</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+          {errors.urgencyLevel && <span className="error-text">{errors.urgencyLevel}</span>}
+        </div>
       </div>
       {currentUser && currentUser.role === 'undergraduate' && (
         <div className="concerns-input-group">
-          <label htmlFor="program">Program:</label>
-          <input
-            type="text"
-            id="program"
-            name="program"
-            value={additionalInfo.program || ''}
-            onChange={handleAdditionalInfoChange}
-            required
-          />
-          <label htmlFor="year_of_study">Year of Study:</label>
-          <input
-            type="number"
-            id="year_of_study"
-            name="year_of_study"
-            value={additionalInfo.year_of_study || ''}
-            onChange={handleAdditionalInfoChange}
-            required
-          />
-          <label htmlFor="major">Major:</label>
-          <input
-            type="text"
-            id="major"
-            name="major"
-            value={additionalInfo.major || ''}
-            onChange={handleAdditionalInfoChange}
-            required
-          />
+          <div>
+            <label htmlFor="program">Program:</label>
+            <input
+              type="text"
+              id="program"
+              name="program"
+              value={additionalInfo.program || ''}
+              onChange={handleAdditionalInfoChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="year_of_study">Year of Study:</label>
+            <input
+              type="number"
+              id="year_of_study"
+              name="year_of_study"
+              value={additionalInfo.year_of_study || ''}
+              onChange={handleAdditionalInfoChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="major">Major:</label>
+            <input
+              type="text"
+              id="major"
+              name="major"
+              value={additionalInfo.major || ''}
+              onChange={handleAdditionalInfoChange}
+              required
+            />
+          </div>
         </div>
       )}
       {currentUser && currentUser.role === 'graduate' && (
         <div className="concerns-input-group">
-          <label htmlFor="program">Program:</label>
-          <input
-            type="text"
-            id="program"
-            name="program"
-            value={additionalInfo.program || ''}
-            onChange={handleAdditionalInfoChange}
-            required
-          />
-          <label htmlFor="field_of_study">Field of Study:</label>
-          <input
-            type="text"
-            id="field_of_study"
-            name="field_of_study"
-            value={additionalInfo.field_of_study || ''}
-            onChange={handleAdditionalInfoChange}
-            required
-          />
-          <label htmlFor="advisor">Advisor:</label>
-          <input
-            type="text"
-            id="advisor"
-            name="advisor"
-            value={additionalInfo.advisor || ''}
-            onChange={handleAdditionalInfoChange}
-            required
-          />
+          <div>
+            <label htmlFor="program">Program:</label>
+            <input
+              type="text"
+              id="program"
+              name="program"
+              value={additionalInfo.program || ''}
+              onChange={handleAdditionalInfoChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="field_of_study">Field of Study:</label>
+            <input
+              type="text"
+              id="field_of_study"
+              name="field_of_study"
+              value={additionalInfo.field_of_study || ''}
+              onChange={handleAdditionalInfoChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="advisor">Advisor:</label>
+            <input
+              type="text"
+              id="advisor"
+              name="advisor"
+              value={additionalInfo.advisor || ''}
+              onChange={handleAdditionalInfoChange}
+              required
+            />
+          </div>
         </div>
       )}
       {(!currentUser || !currentUser.role || currentUser.role === 'default') && (
         <div className="concerns-input-group">
-          <label htmlFor="additional_info">Additional Info:</label>
-          <input
-            type="text"
-            id="additional_info"
-            name="additional_info"
-            value={additionalInfo.additional_info || ''}
-            onChange={handleAdditionalInfoChange}
-            required
-          />
+          <div>
+            <label htmlFor="additional_info">Additional Info:</label>
+            <input
+              type="text"
+              id="additional_info"
+              name="additional_info"
+              value={additionalInfo.additional_info || ''}
+              onChange={handleAdditionalInfoChange}
+              required
+            />
+          </div>
         </div>
       )}
       <div className="concerns-input-group">
-        <label htmlFor="additional_comments">Additional Comments:</label>
-        <textarea
-          id="additional_comments"
-          name="additional_comments"
-          value={additionalComments}
-          onChange={(e) => setAdditionalComments(e.target.value)}
-          className="concerns-textarea"
-        />
+        <div>
+          <label htmlFor="additional_comments">Additional Comments:</label>
+          <textarea
+            id="additional_comments"
+            name="additional_comments"
+            value={additionalComments}
+            onChange={(e) => setAdditionalComments(e.target.value)}
+            className="concerns-textarea"
+          />
+        </div>
       </div>
       <div className="concerns-input-group">
-        <label htmlFor="concern">Concern/Request:</label>
-        <textarea
-          id="concern"
-          name="concern"
-          value={concern}
-          onChange={(e) => setConcern(e.target.value)}
-          className="concerns-textarea"
-          required
-        />
-        {errors.concern && <span className="error-text">{errors.concern}</span>}
+        <div>
+          <label htmlFor="concern">Concern/Request:</label>
+          <textarea
+            id="concern"
+            name="concern"
+            value={concern}
+            onChange={(e) => setConcern(e.target.value)}
+            className="concerns-textarea"
+            required
+          />
+          {errors.concern && <span className="error-text">{errors.concern}</span>}
+        </div>
       </div>
       <button type="submit" className="concerns-submit-btn">
         Submit

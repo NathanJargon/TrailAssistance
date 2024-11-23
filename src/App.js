@@ -7,6 +7,7 @@ import Dashboard from './Screens/Dashboard';
 import Admin from './Screens/Admin';
 import { AuthProvider } from './Screens/Auth/AuthContext';
 import './App.css'; // Import the CSS file
+import thanks from './assets/thanks.png';
 
 function App() {
   const [isDesktop, setIsDesktop] = useState(true);
@@ -29,6 +30,7 @@ function App() {
   if (!isDesktop) {
     return (
       <div className="mobile-warning">
+        <img src={thanks} alt="Thanks" className="thanks-image" />
         <p>Mobile resolution is not supported! Use media display if it exists on your current engine.</p>
       </div>
     );
