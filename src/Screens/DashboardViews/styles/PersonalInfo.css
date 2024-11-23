@@ -1,0 +1,53 @@
+.personalinfo-container {
+    width: 1000px;
+    padding: 50px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    color: white;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.personalinfo-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.personalinfo-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.personalinfo-field {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+}
+
+.personalinfo-field label {
+    margin-bottom: 5px;
+    color: white;
+}
+
+.personalinfo-field input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+}
+
+.personalinfo-field input::placeholder {
+    color: grey;
+}
+
+.personalinfo-box {
+    border: 1px solid black;
+    padding: 20px;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    width: 100;
+    height: auto;
+}

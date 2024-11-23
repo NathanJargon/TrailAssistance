@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { useAuth } from '../Auth/AuthContext';
 
-const Concerns = () => {
+const Concerns = ({ currentUser }) => {
   const [concern, setConcern] = useState('');
   const [additionalInfo, setAdditionalInfo] = useState({});
-  const { currentUser } = useAuth();
   const db = getFirestore();
 
   const handleSubmit = async (e) => {

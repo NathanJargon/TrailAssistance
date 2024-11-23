@@ -31,7 +31,7 @@ const Login = () => {
       querySnapshot.forEach((doc) => {
         if (doc.data().password === password) {
           loginSuccessful = true;
-          userData = doc.data();
+          userData = { ...doc.data(), uid: doc.id };
         }
       });
 

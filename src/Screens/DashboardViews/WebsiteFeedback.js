@@ -1,6 +1,6 @@
 import React from 'react';
 
-const WebsiteFeedback = () => {
+const WebsiteFeedback = ({ currentUser }) => {
   return (
     <div>
       <h2>Website Feedback</h2>
