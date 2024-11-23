@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import SignUp from './Screens/Signup';
 import Login from './Screens/Login';
@@ -6,9 +6,34 @@ import Landing from './Screens/Landing';
 import Dashboard from './Screens/Dashboard';
 import Admin from './Screens/Admin';
 import { AuthProvider } from './Screens/Auth/AuthContext';
-
+import './App.css'; // Import the CSS file
 
 function App() {
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 1024);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Initial check
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  if (!isDesktop) {
+    return (
+      <div className="mobile-warning">
+        <p>Mobile resolution is not supported! Use media display if it exists on your current engine.</p>
+      </div>
+    );
+  }
+
   return (
     <AuthProvider>
       <Router>

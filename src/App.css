@@ -36,3 +36,45 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 1024px) {
+  .App {
+    display: none;
+  }
+  
+  .mobile-warning {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 20px;
+    opacity: 0;
+    transform: scale(0.95);
+    animation: fadeInOut 2s ease-in-out infinite;
+  }
+  
+  @keyframes fadeInOut {
+    0%, 100% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .mobile-warning p {
+    margin: 0;
+    padding: 0;
+    font-size: 1.5em;
+    line-height: 1.4;
+  }
+}
