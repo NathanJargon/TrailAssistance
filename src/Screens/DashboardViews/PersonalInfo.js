@@ -13,7 +13,7 @@ const PersonalInfo = ({ currentUser, onFormValid, onSaveInfo, onSaveAndNavigate 
   useEffect(() => {
     const fetchUserInfo = async () => {
       if (currentUser) {
-        const userDoc = doc(db, 'visitors', currentUser.email);
+        const userDoc = doc(db, 'students', currentUser.email);
         const userSnap = await getDoc(userDoc);
         if (userSnap.exists()) {
           setLocalUserInfo(userSnap.data());
@@ -85,7 +85,7 @@ const PersonalInfo = ({ currentUser, onFormValid, onSaveInfo, onSaveAndNavigate 
       if (!localUserInfo.intended_program) newErrors.intended_program = 'Intended Program is required';
       if (!localUserInfo.inquiry_date) newErrors.inquiry_date = 'Inquiry Date is required';
       if (!localUserInfo.notes) newErrors.notes = 'Notes are required';
-    } else if (localUserInfo.role === 'student_staff') {
+    } else if (localUserInfo.role === 'student-staff') {
       if (!localUserInfo.job_title) newErrors.job_title = 'Job Title is required';
       if (!localUserInfo.department) newErrors.department = 'Department is required';
       if (!localUserInfo.employment_start_date) newErrors.employment_start_date = 'Employment Start Date is required';
@@ -98,11 +98,21 @@ const PersonalInfo = ({ currentUser, onFormValid, onSaveInfo, onSaveAndNavigate 
       return;
     }
 
+    // Convert data types before saving
+    const dataToSave = {
+      ...localUserInfo,
+      year_of_study: localUserInfo.year_of_study ? Number(localUserInfo.year_of_study) : null,
+      graduation_year: localUserInfo.graduation_year ? Number(localUserInfo.graduation_year) : null,
+      inquiry_date: localUserInfo.inquiry_date ? new Date(localUserInfo.inquiry_date) : null,
+      employment_start_date: localUserInfo.employment_start_date ? new Date(localUserInfo.employment_start_date) : null,
+      employment_end_date: localUserInfo.employment_end_date ? new Date(localUserInfo.employment_end_date) : null,
+    };
+
     try {
-      const userDoc = doc(db, 'visitors', currentUser.email);
-      await setDoc(userDoc, localUserInfo);
+      const userDoc = doc(db, 'students', currentUser.email);
+      await setDoc(userDoc, dataToSave);
       alert('Information saved successfully!');
-      onSaveInfo(localUserInfo);
+      onSaveInfo(dataToSave);
       onSaveAndNavigate('concerns'); // Navigate to Personal Concerns after saving
     } catch (error) {
       console.error('Error saving information: ', error);
@@ -118,7 +128,7 @@ const PersonalInfo = ({ currentUser, onFormValid, onSaveInfo, onSaveAndNavigate 
       (data.role === 'exchange' && data.home_institution && data.program_duration && data.advisor) ||
       (data.role === 'non-degree' && data.reason_for_enrollment && data.program_duration) ||
       (data.role === 'prospective' && data.interest_field && data.intended_program && data.inquiry_date && data.notes) ||
-      (data.role === 'student_staff' && data.job_title && data.department && data.employment_start_date && data.employment_end_date && data.employment_status)
+      (data.role === 'student-staff' && data.job_title && data.department && data.employment_start_date && data.employment_end_date && data.employment_status)
     );
     onFormValid(isValid);
   };
@@ -146,7 +156,7 @@ const PersonalInfo = ({ currentUser, onFormValid, onSaveInfo, onSaveAndNavigate 
         <div className="personalinfo-field">
           <label>Email:</label>
           <input
-            type="text"
+            type="email"
             name="email"
             value={localUserInfo.email || ''}
             onChange={handleChange}
@@ -174,7 +184,7 @@ const PersonalInfo = ({ currentUser, onFormValid, onSaveInfo, onSaveAndNavigate 
             <div className="personalinfo-field">
               <label>Year of Study:</label>
               <input
-                type="text"
+                type="number"
                 name="year_of_study"
                 value={localUserInfo.year_of_study || ''}
                 onChange={handleChange}
@@ -274,7 +284,7 @@ const PersonalInfo = ({ currentUser, onFormValid, onSaveInfo, onSaveAndNavigate 
             <div className="personalinfo-field">
               <label>Graduation Year:</label>
               <input
-                type="text"
+                type="number"
                 name="graduation_year"
                 value={localUserInfo.graduation_year || ''}
                 onChange={handleChange}
@@ -430,7 +440,7 @@ const PersonalInfo = ({ currentUser, onFormValid, onSaveInfo, onSaveAndNavigate 
             <div className="personalinfo-field">
               <label>Inquiry Date:</label>
               <input
-                type="text"
+                type="date"
                 name="inquiry_date"
                 value={localUserInfo.inquiry_date || ''}
                 onChange={handleChange}
@@ -454,7 +464,7 @@ const PersonalInfo = ({ currentUser, onFormValid, onSaveInfo, onSaveAndNavigate 
           </div>
         </>
       )}
-      {localUserInfo.role === 'student_staff' && (
+      {localUserInfo.role === 'student-staff' && (
         <>
           <div className="personalinfo-row">
             <div className="personalinfo-field">
@@ -486,7 +496,7 @@ const PersonalInfo = ({ currentUser, onFormValid, onSaveInfo, onSaveAndNavigate 
             <div className="personalinfo-field">
               <label>Employment Start Date:</label>
               <input
-                type="text"
+                type="date"
                 name="employment_start_date"
                 value={localUserInfo.employment_start_date || ''}
                 onChange={handleChange}
@@ -498,7 +508,7 @@ const PersonalInfo = ({ currentUser, onFormValid, onSaveInfo, onSaveAndNavigate 
             <div className="personalinfo-field">
               <label>Employment End Date:</label>
               <input
-                type="text"
+                type="date"
                 name="employment_end_date"
                 value={localUserInfo.employment_end_date || ''}
                 onChange={handleChange}

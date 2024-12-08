@@ -75,7 +75,7 @@ const Concerns = ({ currentUser, onFormValid, onSaveInfo, onSaveAndNavigate }) =
         student_type: currentUser.role || 'default',
         additional_info: additionalInfo,
         purpose_of_visit: purposeOfVisit,
-        appointment_date: appointmentDate,
+        appointment_date: appointmentDate ? new Date(appointmentDate) : null,
         preferred_contact_method: preferredContactMethod,
         urgency_level: urgencyLevel,
         additional_comments: additionalComments,

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { setDoc, doc } from 'firebase/firestore';
-import { db } from '../firebaseConfig'; // Import the initialized Firestore instance
+import { setDoc, doc, collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebaseConfig';
 import './styles/Signup.css';
 import next from '../assets/next.png';
 import emailIcon from '../assets/email.png';
@@ -20,31 +20,27 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      // Log the Firestore instance
-      console.log('Firestore instance:', db);
+      // Count the number of documents in the students collection
+      const studentsCollection = collection(db, 'students');
+      const studentsSnapshot = await getDocs(studentsCollection);
+      const newStudentId = studentsSnapshot.size + 1;
 
-      // Log the email and other details
-      console.log('Email:', email);
-      console.log('Role:', role);
-      console.log('Name:', name);
-      console.log('Password:', password);
-
-      const userDoc = doc(db, 'visitors', email);
-      console.log('Document reference:', userDoc);
+      const userDoc = doc(db, 'students', email);
 
       await setDoc(userDoc, {
+        student_id: newStudentId,
         role,
         name,
         email,
         password,
       });
+
       alert('Sign up successful!');
-      // Clear the form fields
       setRole('');
       setName('');
       setEmail('');
       setPassword('');
-      // Redirect to the dashboard
+      // Redirect to the login page
       navigate('/login');
     } catch (error) {
       console.error('Error signing up: ', error);
@@ -100,6 +96,7 @@ const SignUp = () => {
             <option value="exchange">Exchange</option>
             <option value="non-degree">Non-Degree</option>
             <option value="prospective">Prospective</option>
+            <option value="student-staff">Student Staff</option>
           </select>
         </div>
         <div className="input-group">

@@ -56,6 +56,10 @@
   transition: background-color 0.3s;
 }
 
+.admin-back-button {
+  margin-top: 20px;
+}
+
 .admin-button:hover {
   background-color: #0056b3;
 }
@@ -127,4 +131,41 @@
 .admin-error {
   color: red;
   margin-top: 10px;
+}
+
+.admin-concern-details-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between the boxes */
+  margin-top: 20px;
+}
+
+.admin-concern-detail-box {
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-black background */
+  color: #fff;
+  padding: 5px; /* Reduced padding */
+  border-radius: 8px;
+  flex: 1 1 calc(30% - 20px); /* Adjusted width to make boxes smaller */
+  box-sizing: border-box;
+}
+
+.admin-concern-detail-box h3 {
+  margin-top: 0;
+  font-size: 1em; /* Smaller font size */
+}
+
+.admin-concern-detail-box p {
+  margin-bottom: 0;
+  font-size: 0.9em; /* Smaller font size */
+}
+
+.admin-additional-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Space between the items */
+}
+
+.admin-additional-info-item {
+  flex: 1 1 calc(33.333% - 10px); /* Two items per line */
+  box-sizing: border-box;
 }

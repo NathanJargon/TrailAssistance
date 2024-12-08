@@ -18,7 +18,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const q = query(collection(db, 'visitors'), where('email', '==', email));
+      const q = query(collection(db, 'students'), where('email', '==', email));
       const querySnapshot = await getDocs(q);
 
       if (querySnapshot.empty) {
