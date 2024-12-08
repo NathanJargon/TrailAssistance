@@ -54,12 +54,44 @@ const PersonalInfo = ({ currentUser, onFormValid, onSaveInfo, onSaveAndNavigate 
   const handleSave = async (e) => {
     e.preventDefault();
     const newErrors = {};
+
     if (!localUserInfo.name) newErrors.name = 'Name is required';
     if (!localUserInfo.email) newErrors.email = 'Email is required';
-    if (!localUserInfo.program) newErrors.program = 'Program is required';
-    if (!localUserInfo.year_of_study) newErrors.year_of_study = 'Year of Study is required';
-    if (!localUserInfo.major) newErrors.major = 'Major is required';
-    if (!localUserInfo.status) newErrors.status = 'Status is required';
+
+    if (localUserInfo.role === 'undergraduate') {
+      if (!localUserInfo.program) newErrors.program = 'Program is required';
+      if (!localUserInfo.year_of_study) newErrors.year_of_study = 'Year of Study is required';
+      if (!localUserInfo.major) newErrors.major = 'Major is required';
+      if (!localUserInfo.status) newErrors.status = 'Status is required';
+    } else if (localUserInfo.role === 'graduate') {
+      if (!localUserInfo.program) newErrors.program = 'Program is required';
+      if (!localUserInfo.field_of_study) newErrors.field_of_study = 'Field of Study is required';
+      if (!localUserInfo.status) newErrors.status = 'Status is required';
+      if (!localUserInfo.advisor) newErrors.advisor = 'Advisor is required';
+    } else if (localUserInfo.role === 'alumni') {
+      if (!localUserInfo.graduation_year) newErrors.graduation_year = 'Graduation Year is required';
+      if (!localUserInfo.degree) newErrors.degree = 'Degree is required';
+      if (!localUserInfo.current_employer) newErrors.current_employer = 'Current Employer is required';
+      if (!localUserInfo.job_title) newErrors.job_title = 'Job Title is required';
+    } else if (localUserInfo.role === 'exchange') {
+      if (!localUserInfo.home_institution) newErrors.home_institution = 'Home Institution is required';
+      if (!localUserInfo.program_duration) newErrors.program_duration = 'Program Duration is required';
+      if (!localUserInfo.advisor) newErrors.advisor = 'Advisor is required';
+    } else if (localUserInfo.role === 'non-degree') {
+      if (!localUserInfo.reason_for_enrollment) newErrors.reason_for_enrollment = 'Reason for Enrollment is required';
+      if (!localUserInfo.program_duration) newErrors.program_duration = 'Program Duration is required';
+    } else if (localUserInfo.role === 'prospective') {
+      if (!localUserInfo.interest_field) newErrors.interest_field = 'Interest Field is required';
+      if (!localUserInfo.intended_program) newErrors.intended_program = 'Intended Program is required';
+      if (!localUserInfo.inquiry_date) newErrors.inquiry_date = 'Inquiry Date is required';
+      if (!localUserInfo.notes) newErrors.notes = 'Notes are required';
+    } else if (localUserInfo.role === 'student_staff') {
+      if (!localUserInfo.job_title) newErrors.job_title = 'Job Title is required';
+      if (!localUserInfo.department) newErrors.department = 'Department is required';
+      if (!localUserInfo.employment_start_date) newErrors.employment_start_date = 'Employment Start Date is required';
+      if (!localUserInfo.employment_end_date) newErrors.employment_end_date = 'Employment End Date is required';
+      if (!localUserInfo.employment_status) newErrors.employment_status = 'Employment Status is required';
+    }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -67,12 +99,7 @@ const PersonalInfo = ({ currentUser, onFormValid, onSaveInfo, onSaveAndNavigate 
     }
 
     try {
-      console.log('Firestore instance:', db);
-      console.log('User Info:', localUserInfo);
-
       const userDoc = doc(db, 'visitors', currentUser.email);
-      console.log('Document reference:', userDoc);
-
       await setDoc(userDoc, localUserInfo);
       alert('Information saved successfully!');
       onSaveInfo(localUserInfo);
@@ -84,8 +111,15 @@ const PersonalInfo = ({ currentUser, onFormValid, onSaveInfo, onSaveAndNavigate 
   };
 
   const validateForm = (data) => {
-    const isValid = data.name && data.email && data.program && data.year_of_study && data.major && data.status;
-    console.log('Form is valid:', isValid);
+    const isValid = data.name && data.email && (
+      (data.role === 'undergraduate' && data.program && data.year_of_study && data.major && data.status) ||
+      (data.role === 'graduate' && data.program && data.field_of_study && data.status && data.advisor) ||
+      (data.role === 'alumni' && data.graduation_year && data.degree && data.current_employer && data.job_title) ||
+      (data.role === 'exchange' && data.home_institution && data.program_duration && data.advisor) ||
+      (data.role === 'non-degree' && data.reason_for_enrollment && data.program_duration) ||
+      (data.role === 'prospective' && data.interest_field && data.intended_program && data.inquiry_date && data.notes) ||
+      (data.role === 'student_staff' && data.job_title && data.department && data.employment_start_date && data.employment_end_date && data.employment_status)
+    );
     onFormValid(isValid);
   };
 
